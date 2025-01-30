@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.widget.ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Outer LinearLayout that holds all the content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <!-- Row for Attributes -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/mightTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Might"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/agilityTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Agility"
+            android:textSize="25sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/reasonTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Reason"
+            android:textSize="25sp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Row for Attribute Values -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="4dp">
+
+        <TextView
+            android:id="@+id/might_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="25sp"
+            android:background="@drawable/border"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/agility_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:background="@drawable/border"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/reason_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:background="@drawable/border"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/intuitionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Intuition"
+            android:textSize="25sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/presenceTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Presence"
+            android:textSize="25sp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Row for Attribute Values -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="4dp">
+        <TextView
+            android:id="@+id/intuition_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:background="@drawable/border"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/presence_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:background="@drawable/border"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
+    <!-- Row for Buttons with Headings -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="4dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <!-- Recovery Button with Heading -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recovery"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:layout_marginBottom="8dp" />
+
+            <RelativeLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="16dp">
+
+                <!-- ImageView with a fixed size -->
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/recoveries_button"
+                    android:layout_centerInParent="true" /> <!-- Ensure the image is centered -->
+
+                <!-- TextView centered inside the ImageView -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:layout_centerInParent="true"/> <!-- Center the text over the image -->
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- Heroic Resource Button with Heading -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Heroic Resource"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:layout_marginBottom="8dp" />
+
+            <RelativeLayout
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:src="@drawable/heroic_resource"
+                    android:layout_centerInParent="true" /> <!-- Ensure the image is centered -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:layout_centerInParent="true"/> <!-- Center the text over the image -->
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- Surges Button with Heading -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Surges"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:layout_marginBottom="8dp" />
+
+            <RelativeLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/surges_button"
+                    android:layout_centerInParent="true" /> <!-- Ensure the image is centered -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:layout_centerInParent="true"/> <!-- Center the text over the image -->
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Modifiers Heading with Underline (Centered) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modifiers"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Radio Buttons for Modifiers (Horizontal) -->
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_kit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kit"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/radio_enchantment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enchant"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/radio_prayer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prayer"
+                android:textSize="12sp"  />
+
+            <RadioButton
+                android:id="@+id/radio_augmentation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Augment"
+                android:textSize="12sp"  />
+
+            <RadioButton
+                android:id="@+id/radio_ward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ward"
+                android:textSize="12sp"  />
+        </RadioGroup>
+
+        <!-- Row for Attribute Values -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Speed"
+                android:textSize="20sp"
+                android:background="@drawable/border"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="16sp"
+                android:textColor="#000000"/>
+        </LinearLayout>
+
+    </LinearLayout>
+        <!-- Left Column with Two TextViews -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="start">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weapon/ Implement"
+                android:textSize="20sp"
+                android:background="@drawable/border"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Speed"
+                android:textSize="20sp"
+                android:background="@drawable/border"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+        <!-- Right Column with Six TextViews (Three on top, Three on bottom) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Speed"
+                android:textSize="20sp"
+                android:background="@drawable/border"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Speed"
+                android:textSize="20sp"
+                android:background="@drawable/border"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+</LinearLayout>
+</android.widget.ScrollView>
