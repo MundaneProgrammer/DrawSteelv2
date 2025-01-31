@@ -3,10 +3,10 @@
     android:id="@+id/main_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f0f0f0"
+    android:background="?android:windowBackground"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="20dp"> <!-- Light gray background -->
+    android:padding="20dp"> <!-- Padding for spacing -->
 
     <!-- Title TextView -->
     <TextView
@@ -16,32 +16,35 @@
         android:layout_marginBottom="50dp"
         android:fontFamily="sans-serif-medium"
         android:text="Main Menu"
-        android:textColor="#333333"
+        android:textColor="?attr/colorOnBackground"
         android:textSize="30sp" />
 
     <!-- View Characters Button -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="15dp"
-
         android:elevation="4dp">
 
         <Button
             android:id="@+id/view_characters_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_bg"
+            android:background="?attr/colorPrimary"
             android:padding="15dp"
             android:text="View Characters"
-            android:textColor="#FFFFFF"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="18sp" />
     </androidx.cardview.widget.CardView>
 
-    <!-- Create Character Button -->
+    <!-- Create Character Button (Disabled) -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="15dp"
         android:elevation="4dp">
 
@@ -49,17 +52,20 @@
             android:id="@+id/create_character_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_bg"
+            android:background="?attr/colorPrimary"
+            android:enabled="false"
             android:padding="15dp"
             android:text="Create Character"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="18sp" /> <!-- Button is disabled -->
     </androidx.cardview.widget.CardView>
 
     <!-- Settings Button -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="15dp"
         android:elevation="4dp">
 
@@ -67,10 +73,10 @@
             android:id="@+id/settings_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_bg"
+            android:background="?attr/colorPrimary"
             android:padding="15dp"
             android:text="Settings"
-            android:textColor="#FFFFFF"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="18sp" />
     </androidx.cardview.widget.CardView>
 
@@ -78,17 +84,19 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="10dp"
         android:elevation="4dp">
 
         <Button
             android:id="@+id/exit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_bg"
+            android:background="?attr/colorPrimary"
             android:padding="15dp"
             android:text="Exit"
-            android:textColor="#FFFFFF"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="18sp" />
     </androidx.cardview.widget.CardView>
 

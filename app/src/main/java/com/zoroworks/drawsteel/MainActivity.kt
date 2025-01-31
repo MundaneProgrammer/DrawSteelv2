@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -138,6 +139,37 @@ class MainActivity : AppCompatActivity() {
                 else -> DetailsFragment3()
             }
         }
+    }
+
+    fun showAncestryInfo(view: View?) {
+        AlertDialog.Builder(this)
+            .setTitle("Ancestry Info")
+            .setMessage("Ancestry represents the origin of your character, such as Human, Elf, Dwarf, etc.")
+            .setPositiveButton("OK", null)
+    }
+
+    fun showClassInfo(view: View?) {
+        AlertDialog.Builder(this)
+            .setTitle("Class Info")
+            .setMessage("Class defines your character's main abilities and role in the game, like Warrior, Mage, etc.")
+            .setPositiveButton("OK", null)
+            .show()
+    }
+
+    fun showCareerInfo(view: View?) {
+        AlertDialog.Builder(this)
+            .setTitle("Career Info")
+            .setMessage("Career defines your character's profession or path, such as Adventurer, Merchant, etc.")
+            .setPositiveButton("OK", null)
+            .show()
+    }
+
+    fun showSubclassInfo(view: View?) {
+        AlertDialog.Builder(this)
+            .setTitle("Subclass Info")
+            .setMessage("Subclass represents a special branch of your character's class, such as Berserker for a Warrior.")
+            .setPositiveButton("OK", null)
+            .show()
     }
 
     fun staminaSet() {

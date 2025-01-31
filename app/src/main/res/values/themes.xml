@@ -1,8 +1,33 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme with correct attributes -->
     <style name="Base.Theme.DrawSteel" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Light Theme Colors -->
+
+        <!-- Primary Colors -->
+        <item name="colorPrimary">#6200EE</item> <!-- Primary color (main color of the app) -->
+        <item name="colorPrimaryVariant">#3700B3</item> <!-- Lighter variant for primary color -->
+        <item name="colorOnPrimary">#000000</item> <!-- Text color for elements on primary color -->
+
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">#03DAC5</item> <!-- Secondary color -->
+        <item name="colorOnSecondary">#000000</item> <!-- Text color for elements on secondary color -->
+
+        <!-- Background and Surface Colors -->
+        <item name="android:windowBackground">#FFFFFF</item> <!-- Background color for the app (this is what you wanted) -->
+        <item name="colorOnBackground">#212121</item> <!-- Text color on background (darker for readability) -->
+        <item name="colorSurface">#FFFFFF</item> <!-- Surface color (used for cards, buttons, etc.) -->
+        <item name="colorOnSurface">#000000</item> <!-- Text color on surfaces (black for contrast) -->
+
+        <!-- Error Colors -->
+        <item name="colorError">#B00020</item> <!-- Error color -->
+        <item name="colorOnError">#FFFFFF</item> <!-- Text color for error messages -->
+
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">#212121</item> <!-- Primary text color -->
+        <item name="android:textColorSecondary">#757575</item> <!-- Secondary text color -->
+
+        <!-- Navigation Bar -->
+        <item name="android:navigationBarColor">#FFFFFF</item> <!-- White navigation bar -->
     </style>
 
     <style name="Theme.DrawSteel" parent="Base.Theme.DrawSteel" />

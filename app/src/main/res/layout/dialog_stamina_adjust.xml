@@ -3,66 +3,67 @@
     xmlns:androidx="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="?android:windowBackground"
     android:gravity="center"
-    android:padding="24dp"
-    android:background="#F5F5F5">
+    android:orientation="vertical"
+    android:padding="24dp"> <!-- Background follows theme -->
 
     <!-- CardView to display Stamina info -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:background="?android:windowBackground"
+        android:elevation="4dp"
         android:padding="16dp"
-        android:background="#FFFFFF"
-        android:radius="12dp"
-        android:elevation="4dp">
+        android:radius="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="?android:windowBackground"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/stamina_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Current Stamina:"
+                android:textColor="?attr/colorOnBackground"
                 android:textSize="18sp"
-                android:textColor="#333333"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/current_stamina_display"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="10"
+                android:textColor="?attr/colorAccent"
                 android:textSize="22sp"
-                android:textColor="#FF5722"
-                android:textStyle="bold"
-                android:layout_marginTop="4dp"/>
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Max Stamina: "
-                    android:textSize="16sp"
-                    android:textColor="#666666"/>
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/max_stamina_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10"
-                    android:textSize="16sp"
-                    android:textColor="#666666"/>
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -72,49 +73,49 @@
         android:id="@+id/stamina_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="?android:windowBackground"
+        android:elevation="4dp"
         android:hint="Enter Stamina Value"
         android:inputType="number"
-        android:textSize="18sp"
         android:padding="12dp"
-        android:background="@android:color/white"
-        android:elevation="4dp"
         android:radius="8dp"
-        android:layout_marginBottom="16dp"/>
+        android:textSize="18sp" />
 
     <!-- Increase and Decrease Buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/decrease_button"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="?attr/colorError"
             android:text="-"
-            android:textSize="20sp"
-            android:textColor="@android:color/white"
-            android:backgroundTint="#FF5722"
-            android:layout_marginEnd="12dp"/>
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/increase_button"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="?attr/colorPrimary"
             android:text="+"
-            android:textSize="20sp"
-            android:textColor="@android:color/white"
-            android:backgroundTint="#4CAF50"/>
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <!-- Additional Stamina Info -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="20dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -125,40 +126,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Winded Point: "
-                android:textSize="18sp"
-                android:textColor="#333333"/>
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/winded_point_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5"
-                android:textSize="18sp"
-                android:textColor="#333333"/>
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dying Point: "
+                android:textColor="?attr/colorError"
                 android:textSize="18sp"
-                android:textColor="#D32F2F"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/dying_point_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
+                android:textColor="?attr/colorError"
                 android:textSize="18sp"
-                android:textColor="#D32F2F"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -4,27 +4,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?android:windowBackground"
     android:orientation="vertical"
-    android:background="#FFFFFF"
     android:padding="16dp">
 
     <!-- Top Section: Character Info -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:background="?android:windowBackground"
+        android:elevation="2dp"
         android:gravity="top"
+        android:orientation="horizontal"
         android:padding="8dp">
 
         <!-- Profile Image Button -->
         <ImageView
             android:id="@+id/profile_image_button"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginEnd="16dp"
+            android:background="?android:attr/selectableItemBackground"
             android:contentDescription="Profile Image Button"
-            android:src="@drawable/blank_profile"
-            android:background="?android:attr/selectableItemBackground"/>
+            android:src="@drawable/blank_profile" />
 
         <!-- Character Name and Buttons -->
         <LinearLayout
@@ -33,63 +35,60 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/character_name"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <!-- Character Name -->
-                <TextView
-                    android:id="@+id/character_name"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Character Name"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:layout_marginBottom="8dp"
+                android:text="Character Name"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <!-- Stamina Display -->
             <LinearLayout
                 android:id="@+id/staminaLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text="Stamina: "
-                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp" />
+                    android:layout_marginEnd="8dp"
+                    android:text="Stamina: "
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="16sp" />
 
                 <!-- Current Stamina -->
                 <TextView
                     android:id="@+id/current_stamina_value"
-                    android:text="10"
-                    android:textSize="16sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:text="/"
-                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp" />
+                    android:text="10"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="/"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="16sp" />
 
                 <!-- Max Stamina -->
                 <TextView
                     android:id="@+id/max_stamina_value"
-                    android:text="10"
-                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp" />
+                    android:layout_marginStart="8dp"
+                    android:text="10"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <!-- Level Display -->
@@ -97,37 +96,167 @@
                 android:id="@+id/level_display"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:text="Level: 1"
+                android:textColor="?attr/colorOnBackground"
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
+
+    <!-- GridLayout for Ancestry, Class, Career, and Subclass -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:background="?android:windowBackground"
+        android:elevation="2dp">
+
+        <!-- Ancestry Section -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="showAncestryInfo">
+
+            <TextView
+                android:id="@+id/ancestryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ancestry:"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ancestry_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Human"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Class Section -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="showClassInfo">
+
+            <TextView
+                android:id="@+id/classTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class:"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/class_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Warrior"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Career Section -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="showCareerInfo">
+
+            <TextView
+                android:id="@+id/careerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Career:"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/career_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adventurer"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Subclass Section -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="showSubclassInfo">
+
+            <TextView
+                android:id="@+id/subclassTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subclass:"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/subclass_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Berserker"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </GridLayout>
+
+
 
     <!-- Victories Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="top"
+        android:orientation="horizontal"
         android:padding="8dp">
 
         <TextView
             android:id="@+id/victoriesTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Victories:"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:clickable="true"
-            android:focusable="true"/>
-
+            android:focusable="true"
+            android:text="Victories:"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
         android:gravity="top"
+        android:orientation="horizontal"
         android:padding="8dp">
 
         <ProgressBar
@@ -135,10 +264,11 @@
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:indeterminate="false"
             android:max="15"
             android:progress="1"
-            android:progressTint="#2F90C5" />
+            android:progressTint="?attr/colorPrimary" />
     </LinearLayout>
 
     <!-- ViewPager2 to swipe between layouts -->
@@ -146,10 +276,5 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        android:orientation="horizontal" />
 </LinearLayout>

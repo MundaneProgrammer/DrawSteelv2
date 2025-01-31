@@ -1,7 +1,29 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme for Dark Mode -->
     <style name="Base.Theme.DrawSteel" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Window and Background Colors -->
+        <item name="android:windowBackground">#121212</item> <!-- Dark window background -->
+        <item name="colorSurface">#121212</item> <!-- Surface color (used for cards, etc.) -->
+        <item name="colorOnSurface">#E0E0E0</item> <!-- Text color on surface -->
+
+        <!-- Primary Colors -->
+        <item name="colorPrimary">#6200EE</item> <!-- Primary color -->
+        <item name="colorPrimaryVariant">#3700B3</item> <!-- Primary color variant (for darker shades) -->
+        <item name="colorOnPrimary">#FFFFFF</item> <!-- Text color on primary color -->
+
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">#03DAC5</item> <!-- Secondary color -->
+        <item name="colorOnSecondary">#000000</item> <!-- Text color on secondary -->
+
+        <!-- Error Colors -->
+        <item name="colorError">#CF6679</item> <!-- Error color -->
+        <item name="colorOnError">#000000</item> <!-- Text color on error -->
+
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">#FFFFFF</item> <!-- Primary text color -->
+        <item name="android:textColorSecondary">#BDBDBD</item> <!-- Secondary text color -->
+
+        <!-- Navigation Bar -->
+        <item name="android:navigationBarColor">#121212</item> <!-- Navigation bar color -->
     </style>
 </resources>
