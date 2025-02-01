@@ -16,6 +16,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://repository.liferay.com/nexus/content/repositories/public/")
     }
 }
 

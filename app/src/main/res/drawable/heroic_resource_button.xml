@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Transparent background -->
-    <solid android:color="@android:color/transparent"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
 
-    <!-- Thick black border -->
-    <stroke
-        android:color="#000000"
-        android:width="1dp"/>  <!-- Adjust the thickness as needed -->
-
-    <!-- Hexagonal Shape (PathData) -->
+    <!-- Background (Transparent) -->
     <path
         android:fillColor="@android:color/transparent"
-        android:strokeColor="#000000"
-        android:strokeWidth="4"
-        android:pathData="M 50,10 L 90,30 L 90,70 L 50,90 L 10,70 L 10,30 Z"/>
+        android:pathData="M 50,5 L 93,27 L 93,73 L 50,95 L 7,73 L 7,27 Z" />
 
-    <!-- Padding -->
-    <padding
-        android:left="20dp"
-        android:top="10dp"
-        android:right="20dp"
-        android:bottom="10dp"/>
-</shape>
+    <!-- Outer Glow Effect -->
+    <path
+        android:fillColor="#33FFFFFF"
+        android:pathData="M 50,5 L 93,27 L 93,73 L 50,95 L 7,73 L 7,27 Z"
+        android:strokeWidth="8"
+        android:strokeColor="#66FFFFFF" />
+
+    <!-- Bold White Border -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M 50,5 L 93,27 L 93,73 L 50,95 L 7,73 L 7,27 Z"
+        android:strokeWidth="4"
+        android:strokeColor="@android:color/white"
+        android:strokeLineJoin="round" />
+</vector>

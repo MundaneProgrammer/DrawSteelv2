@@ -5,8 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:windowBackground"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:popupTheme="@style/ThemeOverlay.Material3.Dark.ActionBar"
+        android:titleTextColor="?attr/colorOnPrimary" />
 
     <!-- Top Section: Character Info -->
     <LinearLayout
@@ -41,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Character Name"
-                android:textColor="?attr/colorOnBackground"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

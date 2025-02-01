@@ -10,16 +10,19 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -36,6 +39,10 @@ private val PREFS_NAME = "Settings"
 private var CURRENT_STAMINA_KEY = "currentStamina"
 private val MAX_STAMINA_KEY = "MaxStamina"
 private val CHARACTER_NAME = "CharacterName"
+private val VICTORIES = "Victories"
+private val ANCESTRY_KEY = "Ancestry"
+private val CLASS_KEY = "Class"
+private val CAREER_KEY = "Career"
 private val HEROIC_RESOURCE = "HeroicResource"
 
 
@@ -43,10 +50,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var profileImageButton: ImageView
     private lateinit var staminaDialog: AlertDialog
-    private lateinit var characterNameTextView: TextView
-    private lateinit var heroicResourceTextView: TextView
-    private lateinit var currentStaminaTextView: TextView
-    private lateinit var maxStaminaTextView: TextView
 
     // Launch the gallery to select an image
     private val getImageResult = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -71,11 +74,22 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        hideSystemBars()
 
+        // Set the Toolbar as ActionBar
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        // Optional: Set up your toolbar title, navigation, etc.
+        supportActionBar?.title = "Character Settings"
+
+        // Enable the "Up" button (back arrow) in the toolbar
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false) // Optional: Hide the title if you want
 
         onClickListeners()
 
-        staminaSet()
+        setSettings()
 
 
 
@@ -172,48 +186,68 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    fun staminaSet() {
-        val (currentStamina, maxStamina, characterName) = loadSettings() // Fetch stamina values from SharedPreferences
+    // Set settings in the UI
+    fun setSettings() {
+        val (currentStamina, maxStamina, characterName, victories, ancestry, selectedClass, career) = loadSettings()
 
         val currentStaminaTextView = findViewById<TextView>(R.id.current_stamina_value)
         val maxStaminaTextView = findViewById<TextView>(R.id.max_stamina_value)
         val characterNameTextView = findViewById<TextView>(R.id.character_name)
+        val victoriesProgressBar = findViewById<ProgressBar>(R.id.victory_points_progress)
+        val ancestryTextView = findViewById<TextView>(R.id.ancestry_value)
+        val classTextView = findViewById<TextView>(R.id.class_value)
+        val careerTextView = findViewById<TextView>(R.id.career_value)
 
-
-
-        currentStaminaTextView.text = "$currentStamina"  // Update the current stamina value
-        maxStaminaTextView.text = "$maxStamina"  // Update the max stamina value
+        // Update UI with loaded values
+        currentStaminaTextView.text = "$currentStamina"
+        maxStaminaTextView.text = "$maxStamina"
         characterNameTextView.text = characterName
+        victoriesProgressBar.progress = victories
+        ancestryTextView.text = ancestry
+        classTextView.text = selectedClass
+        careerTextView.text = career
     }
 
-    // Function to save the stamina values to SharedPreferences
-    fun saveStamina(currentStamina: Int, maxStamina: Int) {
+    // Function to save settings to SharedPreferences
+    fun saveStamina(currentStamina: Int) {
         val sharedPreferences: SharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putInt(CURRENT_STAMINA_KEY, currentStamina)
-        editor.putInt(MAX_STAMINA_KEY, maxStamina)
         editor.apply()  // Apply the changes
     }
 
-    // Function to load the stamina values from SharedPreferences
-    fun loadSettings(): Triple<Int, Int, String> {
+    // Function to load settings from SharedPreferences
+    fun loadSettings(): Quadruple<Int, Int, String, Int, String, String, String> {
         val sharedPreferences: SharedPreferences = this.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-        val currentStamina = sharedPreferences.getInt(CURRENT_STAMINA_KEY, 0) // Default to 0 if not found
-        val maxStamina = sharedPreferences.getInt(MAX_STAMINA_KEY, 100) // Default to 100 if not found
-        val characterName = sharedPreferences.getString(CHARACTER_NAME, "Character Name") ?: "Character Name" // Default to "Character Name" if not found
-//        val heroicResource = sharedPreferences.getString(HEROIC_RESOURCE, "Mana") ?: "Mana" // Default to 100 if not found
+        // Fetch values from SharedPreferences with defaults
+        val currentStamina = sharedPreferences.getInt(CURRENT_STAMINA_KEY, 0) // Default to 0
+        val maxStamina = sharedPreferences.getInt(MAX_STAMINA_KEY, 100) // Default to 100
+        val victories = sharedPreferences.getInt(VICTORIES, 0) // Default to 0
+        val characterName = sharedPreferences.getString(CHARACTER_NAME, "Character Name") ?: "Character Name"
+        val ancestry = sharedPreferences.getString(ANCESTRY_KEY, "Human") ?: "Human"  // Default ancestry value
+        val selectedClass = sharedPreferences.getString(CLASS_KEY, "Censor") ?: "Censor"  // Default class value
+        val career = sharedPreferences.getString(CAREER_KEY, "Agent") ?: "Agent"  // Default career value
 
-        return Triple(currentStamina, maxStamina, characterName)
+        // Return all the settings data
+        return Quadruple(currentStamina, maxStamina, characterName, victories, ancestry, selectedClass, career)
     }
 
-    // Define a data class to hold four values
-    data class Quadruple<A, B, C, D>(val first: A, val second: B, val third: C, val fourth: D)
+    // Define a data class to hold all the values (seven values in total)
+    data class Quadruple<A, B, C, D, E, F, G>(
+        val first: A, // currentStamina
+        val second: B, // maxStamina
+        val third: C, // characterName
+        val fourth: D, // victories
+        val fifth: E, // ancestry
+        val sixth: F, // selectedClass
+        val seventh: G  // career
+    )
 
     fun openStaminaDialog() {
         val (currentStamina, maxStamina) = loadSettings()
         val windedPoint = maxStamina / 2
-        val dyingPoint = maxStamina / 3
+        val dyingPoint = 0 - windedPoint
 
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_stamina_adjust, null)
         val currentStaminaDisplay = dialogView.findViewById<TextView>(R.id.current_stamina_display)
@@ -243,8 +277,8 @@ class MainActivity : AppCompatActivity() {
 
         fun updateStamina(updatedStamina: Int) {
             if (updatedStamina in 0..maxStamina) {
-                saveStamina(updatedStamina, maxStamina)
-                staminaSet()
+                saveStamina(updatedStamina)
+                setSettings()
                 Toast.makeText(this, "Stamina Updated", Toast.LENGTH_SHORT).show()
                 staminaDialog.dismiss()
             } else {
@@ -312,6 +346,7 @@ class MainActivity : AppCompatActivity() {
 
         val victoriesTextView: TextView = findViewById(R.id.victoriesTextView)
         val staminaLayout: LinearLayout = findViewById(R.id.staminaLayout)
+        val progressBar: ProgressBar = findViewById(R.id.victory_points_progress)
 
 
         // Set click listener for Armor TextView
@@ -334,5 +369,127 @@ class MainActivity : AppCompatActivity() {
             openStaminaDialog()
         }
 
+        // Set the click listener for the ProgressBar
+        progressBar.setOnClickListener {
+            // Create the dialog
+            val dialogView = layoutInflater.inflate(R.layout.dialog_progress_layout, null)
+
+            val progressBarDialog: ProgressBar = dialogView.findViewById(R.id.dialog_progress_bar)
+            val btnMinus: Button = dialogView.findViewById(R.id.btn_minus)
+            val btnPlus: Button = dialogView.findViewById(R.id.btn_plus)
+            val btnCancel: Button = dialogView.findViewById(R.id.btn_cancel)
+            val victoriesTextView: TextView = dialogView.findViewById(R.id.victories_value)
+            val btnReset: Button = dialogView.findViewById(R.id.btn_reset)
+            val btnLevelUp: Button = dialogView.findViewById(R.id.btn_level_up)
+
+            // Create the dialog before setting listeners for the buttons
+            val builder = AlertDialog.Builder(this)
+                .setView(dialogView)
+                .setCancelable(true)
+
+            val dialog = builder.create()
+
+            // Initialize the TextView with the current value of progress
+            victoriesTextView.text = "Victories: ${progressBar.progress}"
+
+            // Set the progress to match the original progress
+            progressBarDialog.progress = progressBar.progress
+
+            // Reset Button logic with confirmation popup
+            btnReset.setOnClickListener {
+                // Create a confirmation dialog
+                val resetConfirmationDialog = AlertDialog.Builder(this)
+                    .setTitle("Are you sure?")
+                    .setMessage("Do you really want to reset the progress?")
+                    .setPositiveButton("Yes") { _, _ ->
+                        progressBarDialog.progress = 0
+                        victoriesTextView.text = "Victories: 0"
+                        updateVictories(0)  // Reset the victories value in SharedPreferences
+                        btnLevelUp.isEnabled = false  // Disable level up until full
+                    }
+                    .setNegativeButton("No") { dialog, _ ->
+                        dialog.dismiss()  // Dismiss the confirmation dialog without resetting
+                    }
+                    .create()
+
+                resetConfirmationDialog.show()  // Show the confirmation dialog
+            }
+
+            // Level Up Button logic
+            btnLevelUp.isEnabled = progressBarDialog.progress == progressBarDialog.max  // Disable until full progress
+
+            // Level Up logic
+            btnLevelUp.setOnClickListener {
+                // Handle level-up logic, such as increasing max progress, etc.
+                // Example: increase the max progress by 5
+                progressBarDialog.max += 5
+                progressBarDialog.progress = 0  // Reset progress
+                victoriesTextView.text = "Victories: 0"  // Reset the victories
+                updateVictories(0)  // Update SharedPreferences after level up
+            }
+
+            // Handle Minus Button click
+            btnMinus.setOnClickListener {
+                if (progressBarDialog.progress > 0) {
+                    progressBarDialog.progress -= 1
+                    victoriesTextView.text = "Victories: ${progressBarDialog.progress}"  // Update TextView dynamically
+                    updateVictories(progressBarDialog.progress)  // Update SharedPreferences
+                    dialog.dismiss()  // Close the dialog after change
+                }
+            }
+
+            // Handle Plus Button click
+            btnPlus.setOnClickListener {
+                if (progressBarDialog.progress < progressBarDialog.max) {
+                    progressBarDialog.progress += 1
+                    victoriesTextView.text = "Victories: ${progressBarDialog.progress}"  // Update TextView dynamically
+                    updateVictories(progressBarDialog.progress)  // Update SharedPreferences
+                    dialog.dismiss()  // Close the dialog after change
+                }
+            }
+
+
+
+            // Handle Cancel Button click
+            btnCancel.setOnClickListener {
+                dialog.dismiss()  // Close the dialog without changes
+            }
+
+            // Show the dialog
+            dialog.show()
+        }
+
+
+
+
+
+    }
+    // Function to save the updated victories to SharedPreferences
+    private fun updateVictories(newVictories: Int) {
+        val sharedPreferences: SharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt(VICTORIES, newVictories)
+        editor.apply()  // Apply the changes
+        setSettings()  // Update UI with new victories value
+    }
+
+    // Handle back button press in the toolbar
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            onBackPressed() // Go back to the previous activity (MainMenu)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun hideSystemBars() {
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                )
     }
 }

@@ -26,18 +26,19 @@
         android:layout_marginBottom="16dp"
         android:background="?attr/colorAccent" />
 
-    <!-- List -->
+    <!-- Scrollable List -->
     <ListView
         android:id="@+id/dialog_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="?attr/colorSecondary"
         android:divider="?android:attr/dividerVertical"
         android:dividerHeight="1dp"
         android:padding="8dp"
         android:scrollbars="vertical" />
 
-    <!-- Cancel Button -->
+    <!-- Cancel Button at the bottom -->
     <Button
         android:id="@+id/dialog_cancel"
         android:layout_width="match_parent"
